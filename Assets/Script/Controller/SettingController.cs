@@ -26,7 +26,6 @@ public class SettingController : MonoBehaviour
         { "2", new int[]{ 640, 360, 2 } },
     };
 
-    // Use this for initialization
     void Start()
     {
         if (!_instance)
@@ -66,7 +65,6 @@ public class SettingController : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

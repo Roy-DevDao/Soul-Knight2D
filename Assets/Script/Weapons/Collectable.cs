@@ -11,7 +11,7 @@ public class Collectable : MonoBehaviour
     void Start()
     {
         attachedWeapon = GetComponent<BaseWeapon>();
-        player = FindObjectOfType<Player>();
+        player = FindFirstObjectByType<Player>();
     }
 
     // Update is called once per frame
@@ -56,19 +56,22 @@ public class Collectable : MonoBehaviour
 
     private void ShowInfo(bool isShow = false)
     {
+        if (UIController.Instance == null) return; // Prevents NullReferenceException
+
         if (!isShow)
         {
             UIController.Instance.showWeaponOnHover(false);
-        } else
-        {
-            float damageDiff = (player.weapon) 
-                ? attachedWeapon.damage - player.weapon.GetComponent<BaseWeapon>().damage
-                : 0;
-            UIController.Instance.updateWeaponOnHover(
-                attachedWeapon.name, 
-                attachedWeapon.damage,
-                damageDiff
-            );
-        }   
-    }
+        }
+        else
+           {
+               float damageDiff = (player.weapon)
+                   ? attachedWeapon.damage - player.weapon.GetComponent<BaseWeapon>().damage
+                   : 0;
+               UIController.Instance.updateWeaponOnHover(
+                   attachedWeapon.name,
+                   attachedWeapon.damage,
+                   damageDiff
+               );
+           }
+       }
 }

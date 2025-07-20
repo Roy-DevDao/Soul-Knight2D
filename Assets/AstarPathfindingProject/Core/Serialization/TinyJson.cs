@@ -326,8 +326,9 @@ namespace Pathfinding.Serialization {
 				if (EatField() != "GUID") throw new Exception("Expected 'GUID' field");
 				string guid = EatField();
 
-				foreach (var helper in UnityEngine.Object.FindObjectsOfType<UnityReferenceHelper>()) {
-					if (helper.GetGUID() == guid) {
+                foreach (var helper in UnityEngine.Object.FindObjectsByType<UnityReferenceHelper>(FindObjectsSortMode.None))
+                {
+                    if (helper.GetGUID() == guid) {
 						if (Type.Equals(type, typeof(GameObject))) {
 							return helper.gameObject;
 						} else {
