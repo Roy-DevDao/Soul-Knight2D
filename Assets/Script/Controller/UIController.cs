@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI weaponOnHoverInfo;
     public TextMeshProUGUI weaponOnHoverDamage;
 
+    public TextMeshProUGUI chestInstructionText;
+    public TextMeshProUGUI chestRewardText;
     private void Awake()
     {
         if (_instance == null)
@@ -46,6 +48,33 @@ public class UIController : MonoBehaviour
         weaponOnHoverInfo.gameObject.SetActive(isShow);
         weaponOnHoverDamage.gameObject.SetActive(isShow);
     }
+
+    public void ShowChestInstruction(bool isShow = true)
+    {
+        if (chestInstructionText != null)
+            chestInstructionText.gameObject.SetActive(isShow);
+        Debug.Log("GUILDDDDDDDDDDDDDDDDDDDDDD");
+    }
+
+    public void ShowChestReward(string message)
+    {
+        if (chestRewardText != null)
+        {
+            chestRewardText.text = message;
+            chestRewardText.gameObject.SetActive(true);
+            StartCoroutine(HideChestRewardAfterDelay());
+        }
+    }
+
+    private IEnumerator HideChestRewardAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        if (chestRewardText != null)
+        {
+            chestRewardText.gameObject.SetActive(false);
+        }
+    }
+
 
     private void OnDestroy()
     {

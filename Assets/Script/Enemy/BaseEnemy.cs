@@ -5,6 +5,7 @@ using System.Collections;
 public class BaseEnemy : MonoBehaviour
 {
     public Player target;
+    public GameObject coinPrefab; // Assign this in Inspector
 
     public int maxHealth = 10;
     protected float _health = 0f;
@@ -70,6 +71,10 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void OnAttacked(Collider2D collider) {}
     protected virtual void OnDie() {
         ParametersScript.scoreValue += 10;
+ if (coinPrefab != null)
+        {
+            Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 

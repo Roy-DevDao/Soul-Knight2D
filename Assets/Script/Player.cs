@@ -101,4 +101,17 @@ public class Player : MonoBehaviour
             ParametersScript.scoreValue = score;
         }
     }
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(TAG.COIN))
+        {
+            ParametersScript.scoreValue += 1; // Increase score by 1
+            if (UICoinDisplay.Instance != null)
+                UICoinDisplay.Instance.AddCoin(1);
+            else
+                Debug.LogWarning("CoinManager is missing in the scene!");
+            Destroy(other.gameObject);        // Remove coin from scene
+        }
+    }
+
 }
