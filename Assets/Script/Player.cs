@@ -93,4 +93,13 @@ public class Player : MonoBehaviour
             ParametersScript.scoreValue = score;
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(TAG.COIN))
+        {
+            ParametersScript.scoreValue += 1; // Increase score by 1
+            Destroy(other.gameObject);        // Remove coin from scene
+        }
+    }
+
 }
