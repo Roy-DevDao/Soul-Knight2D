@@ -10,7 +10,7 @@ public class BaseEnemy : MonoBehaviour
     protected float _health = 0f;
 
     public Slider healthbar;
-    private  float knockbackDistance = 0.5f;
+    private  float knockbackDistance = 3f;
 
     public float health
     {
