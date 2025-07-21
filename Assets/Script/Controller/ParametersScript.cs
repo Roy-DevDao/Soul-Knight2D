@@ -17,7 +17,7 @@ public class ParametersScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        parameters.text = "SCORE: " + scoreValue + "\nHEAL: " + healValue;
-        Debug.Log(scoreValue);
+        //parameters.text = "SCORE: " + scoreValue + "\nHEAL: " + healValue;
+        //Debug.Log(scoreValue);
     }
 }

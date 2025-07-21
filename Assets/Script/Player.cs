@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+    public HealthAndMana healthAndMana;
+    public GameObject blood;
 
 
     public GameObject weapon;
@@ -44,23 +46,29 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        PlayerHealth playerHealth = GetComponent<PlayerHealth>();
         Debug.Log("xyz: " + other.collider.tag + " - " + ParametersScript.healValue);
         switch (other.collider.tag)
         {
             case TAG.ENEMY:
-                ParametersScript.healValue -= 100;
+                //ParametersScript.healValue -= 100;
+                playerHealth.TakeDamage(10);
+                Instantiate(blood, transform.position, Quaternion.identity);
                 break;
             case TAG.ENEMY_BULLET:
-                ParametersScript.healValue -= 200;
+                //ParametersScript.healValue -= 200;
+                playerHealth.TakeDamage(20);
+                Instantiate(blood, transform.position, Quaternion.identity);
                 break;
             default:
                 break;
 
         }
-        if (ParametersScript.healValue <= 0)
+        if (playerHealth.currentHealth <= 0)
         {
             LevelController.Instance.startGame();
-            ParametersScript.healValue = 1000; ;
+            //ParametersScript.healValue = 1000;
+            healthAndMana.UpdateHealthBar(100, 100);
         }
     }
 

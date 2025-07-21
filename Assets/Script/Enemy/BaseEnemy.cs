@@ -10,6 +10,7 @@ public class BaseEnemy : MonoBehaviour
     protected float _health = 0f;
 
     public Slider healthbar;
+    private  float knockbackDistance = 0.5f;
 
     public float health
     {
@@ -26,6 +27,7 @@ public class BaseEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Collider2D collider = collision;
+        ReceiveDame receiveDame = collider.GetComponent<ReceiveDame>();
         Debug.Log("Dungeon: collision " + collider);
         if (collider.tag == TAG.SWORD)
         {
@@ -33,6 +35,8 @@ public class BaseEnemy : MonoBehaviour
             if (swordAttack.attacking)
             {
                 Debug.Log("Attacked" + swordAttack.baseWeapon.damage);
+                Vector2 knockDirection = (transform.position - collision.transform.position).normalized;
+                transform.position += (Vector3)(knockDirection * knockbackDistance);
                 swordAttack.attacking = false;
                 this.GotDamage(swordAttack.baseWeapon.damage, collider);
             }
@@ -43,6 +47,8 @@ public class BaseEnemy : MonoBehaviour
             if (bullet != null)
             {
                 Debug.Log("Attacked" + bullet.GetDamage());
+                Vector2 knockDirection = (transform.position - collision.transform.position).normalized;
+                transform.position += (Vector3)(knockDirection * knockbackDistance);
                 this.GotDamage(bullet.GetDamage(), collider);
             }
         }
