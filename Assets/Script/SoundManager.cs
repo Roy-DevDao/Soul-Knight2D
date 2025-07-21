@@ -1,22 +1,38 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private Slider volumeSlider;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static SoundManager Instance;
 
-    void Start()
+    public AudioClip coinSound;
+    private AudioSource audioSource;
+
+    void Awake()
     {
-        float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
-        volumeSlider.value = savedVolume;
-        AudioListener.volume = savedVolume;
-
-        volumeSlider.onValueChanged.AddListener(SetVolume);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: persist between scenes
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void SetVolume(float volume)
+    public void PlayCoinSound()
     {
-        AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("Volume", volume);
+        if (coinSound != null)
+        {
+            Debug.Log("Playing coin sound from SoundManager");
+            audioSource.PlayOneShot(coinSound);
+        }
+        else
+        {
+            Debug.LogWarning("Coin sound not assigned in SoundManager.");
+        }
     }
+
 }
