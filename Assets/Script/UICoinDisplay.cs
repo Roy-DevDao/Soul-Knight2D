@@ -20,6 +20,8 @@ public class UICoinDisplay : MonoBehaviour
     {
         coinCount += amount;
         coinText.text = "x " + coinCount;
+                SoundManager.Instance.PlayCoinSound();
+
     }
 
     public int GetCoinCount()
