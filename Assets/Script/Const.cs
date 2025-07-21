@@ -13,4 +13,6 @@ public static class TAG
     public const string BULLET = "Bullet";
 
     public const string ENEMY_BULLET = "EnemyBullet";
+        public const string COIN = "Coin";
+
 }
