@@ -6,12 +6,12 @@ public class BaseEnemy : MonoBehaviour
 {
     public Player target;
     public GameObject coinPrefab; // Assign this in Inspector
+    public GameObject blood;
 
     public int maxHealth = 10;
     protected float _health = 0f;
 
     public Slider healthbar;
-    private  float knockbackDistance = 3f;
 
     public float health
     {
@@ -35,10 +35,9 @@ public class BaseEnemy : MonoBehaviour
             SwordAttack swordAttack = collider.GetComponent<SwordAttack>();
             if (swordAttack.attacking)
             {
-                Debug.Log("Attacked" + swordAttack.baseWeapon.damage);
-                Vector2 knockDirection = (transform.position - collision.transform.position).normalized;
-                transform.position += (Vector3)(knockDirection * knockbackDistance);
+                Debug.Log("Attacked" + swordAttack.baseWeapon.damage);              
                 swordAttack.attacking = false;
+                Instantiate(blood, transform.position, Quaternion.identity);
                 this.GotDamage(swordAttack.baseWeapon.damage, collider);
             }
         }
@@ -48,8 +47,6 @@ public class BaseEnemy : MonoBehaviour
             if (bullet != null)
             {
                 Debug.Log("Attacked" + bullet.GetDamage());
-                Vector2 knockDirection = (transform.position - collision.transform.position).normalized;
-                transform.position += (Vector3)(knockDirection * knockbackDistance);
                 this.GotDamage(bullet.GetDamage(), collider);
             }
         }

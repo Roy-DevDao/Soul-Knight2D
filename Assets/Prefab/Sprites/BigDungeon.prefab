@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 1750850407}
   - component: {fileID: 3500123074690801588}
   - component: {fileID: 314112608}
-  - component: {fileID: -5243461149351049103}
   m_Layer: 14
   m_Name: BigDungeon
   m_TagString: Enemy
@@ -230,6 +229,7 @@ MonoBehaviour:
   target: {fileID: 0}
   coinPrefab: {fileID: 8247148170100531420, guid: 12fff820e947f3d4183d5c1666176935,
     type: 3}
+  blood: {fileID: 6827979486475454306, guid: 3876ea492de6eba4da2715822a638ca0, type: 3}
   maxHealth: 10
   healthbar: {fileID: 5918648002697936681}
 --- !u!114 &96017509913733519
@@ -381,18 +381,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
---- !u!114 &-5243461149351049103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96017509913733508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08cefa30b42c2443ba348a029f992b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &568580608062949919
 GameObject:
   m_ObjectHideFlags: 0

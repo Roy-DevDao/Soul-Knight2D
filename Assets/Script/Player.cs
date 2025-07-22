@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     public HealthAndMana healthAndMana;
-    public GameObject blood;
+    
+    private float knockbackDistance = 1f;
 
 
     public GameObject weapon;
@@ -48,17 +49,19 @@ public class Player : MonoBehaviour
     {
         PlayerHealth playerHealth = GetComponent<PlayerHealth>();
         Debug.Log("xyz: " + other.collider.tag + " - " + ParametersScript.healValue);
+        Vector2 knockDirection = (transform.position - other.transform.position).normalized;       
         switch (other.collider.tag)
         {
             case TAG.ENEMY:
                 //ParametersScript.healValue -= 100;
                 playerHealth.TakeDamage(10);
-                Instantiate(blood, transform.position, Quaternion.identity);
+                transform.position += (Vector3)(knockDirection * knockbackDistance);
+                GetComponent<ReceiveDame>().FlashOnDamage();
                 break;
             case TAG.ENEMY_BULLET:
                 //ParametersScript.healValue -= 200;
                 playerHealth.TakeDamage(20);
-                Instantiate(blood, transform.position, Quaternion.identity);
+                GetComponent<ReceiveDame>().FlashOnDamage();
                 break;
             default:
                 break;
