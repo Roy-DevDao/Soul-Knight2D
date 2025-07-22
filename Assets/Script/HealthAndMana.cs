@@ -9,6 +9,7 @@ public class HealthAndMana : MonoBehaviour
     public Image fillManaBar;
     public TMP_Text healthText;
     public TMP_Text manaText;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,5 +43,11 @@ public class HealthAndMana : MonoBehaviour
         fillHealthBar.fillAmount = (float)(currentValue + moreHealth) / 100;
         healthText.text = $"{currentValue + moreHealth}/100";
             
+    }
+    public void healMana(int currentValue, int moreMana)
+    {
+        fillManaBar.fillAmount = (float)(currentValue + moreMana) / 100;
+        manaText.text = $"{currentValue + moreMana}/100";
+
     }
 }
