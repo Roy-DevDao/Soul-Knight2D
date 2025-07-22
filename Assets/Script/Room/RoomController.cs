@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -7,11 +7,14 @@ using UnityEngine.Events;
 
 public class RoomController : MonoBehaviour
 {
-    private bool isSolved = false;
+    public bool isSolved = false;
     public List<RoomGate> gates;
     public List<BaseEnemy> enemiesInRoom;
     public UnityEvent onSolved;
     public GameObject chest;
+
+    private bool hasPlayerEnteredUnsolvedRoom = false;
+
     // Use this for initialization
     void Start()
     {
@@ -19,20 +22,31 @@ public class RoomController : MonoBehaviour
         {
             chest.SetActive(false);
         }
-        foreach (RoomGate gate in gates) {
-            gate.onEnter(() => {
-                gate.gameObject.SetActive(false);
-                foreach (BaseEnemy enemy in enemiesInRoom)
-                {
-                    AIDestinationSetter setter = enemy.GetComponent<AIDestinationSetter>();
-                    if (setter != null)
-                    {
-                        setter.target = GameObject.Find("Player")?.transform;
-                    }
+        foreach (RoomGate gate in gates)
+        {
 
-                    enemy.target = FindAnyObjectByType<Player>();
+            gate.roomController = this;
+
+            gate.onEnter(() =>
+            {
+                if (!isSolved && !hasPlayerEnteredUnsolvedRoom)
+                {
+                    hasPlayerEnteredUnsolvedRoom = true;
+                    //gate.gameObject.SetActive(false);
+                    foreach (BaseEnemy enemy in enemiesInRoom)
+                    {
+                        AIDestinationSetter setter = enemy.GetComponent<AIDestinationSetter>();
+                        if (setter != null)
+                        {
+                            setter.target = GameObject.Find("Player")?.transform;
+                        }
+
+                        enemy.target = FindAnyObjectByType<Player>();
+                    }
                 }
             });
+
+            gate.gameObject.SetActive(true);
         }
     }
 
@@ -43,13 +57,13 @@ public class RoomController : MonoBehaviour
         Debug.Log("Solve Room");
 
         isSolved = true;
-        foreach (RoomGate gate in gates)
-        {
-            gate.gameObject.SetActive(false);
-        }
+        //foreach (RoomGate gate in gates)
+        //{
+        //    gate.gameObject.SetActive(true);
+        //}
         if (chest != null)
         {
-            chest.SetActive(true); 
+            chest.SetActive(true);
             Transform chestClose = chest.transform.Find("ChestClose");
             if (chestClose != null)
                 chestClose.gameObject.SetActive(true);
@@ -74,7 +88,7 @@ public class RoomController : MonoBehaviour
 
         if (gates.Count > 0)
         {
-            List<RoomGate> gatesFiltered = new List<RoomGate>(); 
+            List<RoomGate> gatesFiltered = new List<RoomGate>();
             foreach (RoomGate gate in gates)
             {
                 if (gate.gameObject.activeSelf)
@@ -99,5 +113,17 @@ public class RoomController : MonoBehaviour
         {
             this.Solve();
         }
+    }
+
+    public void HideGateTemporarily(GameObject gateObj)
+    {
+        StartCoroutine(HideGateCoroutine(gateObj));
+    }
+
+    private IEnumerator HideGateCoroutine(GameObject gateObj)
+    {
+        gateObj.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        gateObj.SetActive(true);
     }
 }
