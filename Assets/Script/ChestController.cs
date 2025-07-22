@@ -5,6 +5,9 @@ public class ChestController : MonoBehaviour
     public GameObject chestClose;
     public GameObject chestOpen;
 
+    public AudioSource chestOpeningSource;
+    public AudioSource chestAppearSource;
+
     private bool isPlayerInRange = false;
     private bool isOpened = false;
 
@@ -12,11 +15,20 @@ public class ChestController : MonoBehaviour
     {
         if (chestClose != null) chestClose.SetActive(false);
         if (chestOpen != null) chestOpen.SetActive(false);
+
+        // Phát âm khi rương xuất hiện
+        if (chestAppearSource != null)
+        {
+            chestAppearSource.Play();
+        }
     }
 
-    public void ActivateChest() 
+    public void ActivateChest()
     {
         if (chestClose != null) chestClose.SetActive(true);
+
+        // Gợi ý: Bạn có thể phát âm thanh xuất hiện ở đây nếu muốn
+        // if (chestAppearSource != null) chestAppearSource.Play();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -51,17 +63,20 @@ public class ChestController : MonoBehaviour
 
         isOpened = true;
         UIController.Instance.ShowChestInstruction(false);
-
-
-        AudioSource audio = GetComponent<AudioSource>();
-        if (audio != null)
+        Debug.Log("Phat ammmmmmmmmmmmmmmmmmmmmm");
+        
+        if (chestOpeningSource != null)
         {
-            audio.Play();
+            Debug.Log("Phat am Thanhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+
+            chestOpeningSource.Play();
         }
+
 
         if (chestClose != null) chestClose.SetActive(false);
         if (chestOpen != null) chestOpen.SetActive(true);
 
+        // Phần thưởng
         int reward = Random.Range(0, 2);
         string rewardText = reward == 0
             ? "🎁 +500 máu!"

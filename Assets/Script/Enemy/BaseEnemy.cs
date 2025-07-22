@@ -5,7 +5,8 @@ using System.Collections;
 public class BaseEnemy : MonoBehaviour
 {
     public Player target;
-
+    public GameObject coinPrefab; // Assign this in Inspector
+    public GameObject blood;
     public int maxHealth = 10;
     protected float _health = 0f;
 
@@ -34,6 +35,7 @@ public class BaseEnemy : MonoBehaviour
             {
                 Debug.Log("Attacked" + swordAttack.baseWeapon.damage);
                 swordAttack.attacking = false;
+                Instantiate(blood, transform.position, Quaternion.identity);
                 this.GotDamage(swordAttack.baseWeapon.damage, collider);
             }
         }
@@ -54,16 +56,22 @@ public class BaseEnemy : MonoBehaviour
         if (_health >= damage)
         {
             _health -= damage;
-        } else
+        }
+        else
         {
             _health = 0;
             this.OnDie();
         }
     }
 
-    protected virtual void OnAttacked(Collider2D collider) {}
-    protected virtual void OnDie() {
+    protected virtual void OnAttacked(Collider2D collider) { }
+    protected virtual void OnDie()
+    {
         ParametersScript.scoreValue += 10;
+        if (coinPrefab != null)
+        {
+            Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 

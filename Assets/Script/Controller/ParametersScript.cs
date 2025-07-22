@@ -7,14 +7,13 @@ public class ParametersScript : MonoBehaviour
 {
     public static int scoreValue = 0;
     public static int healValue = 1000;
+    public static int point = 0;
     public TextMeshProUGUI parameters;
 
-    // Start is called before the first frame update
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
         parameters.text = "SCORE: " + scoreValue + "\nHEAL: " + healValue;

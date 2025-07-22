@@ -11,13 +11,11 @@ public class Player : MonoBehaviour
 
     float count = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         this.spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         this.followMouse();
@@ -49,9 +47,11 @@ public class Player : MonoBehaviour
         {
             case TAG.ENEMY:
                 ParametersScript.healValue -= 100;
+                GetComponent<ReceiveDame>().FlashOnDamage();
                 break;
             case TAG.ENEMY_BULLET:
                 ParametersScript.healValue -= 200;
+                GetComponent<ReceiveDame>().FlashOnDamage();
                 break;
             default:
                 break;
@@ -61,6 +61,8 @@ public class Player : MonoBehaviour
         {
             LevelController.Instance.startGame();
             ParametersScript.healValue = 1000; ;
+            ParametersScript.scoreValue = 0;
+            ParametersScript.point = 0;
         }
     }
 
@@ -91,6 +93,21 @@ public class Player : MonoBehaviour
             LevelController.Instance.startGame();
             ParametersScript.healValue = heal;
             ParametersScript.scoreValue = score;
+            ParametersScript.point = 0;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            ParametersScript.scoreValue += 1; // Increase score by 1
+            ParametersScript.point += 1;
+            if (UICoinDisplay.Instance != null)
+                UICoinDisplay.Instance.AddCoin(1);
+            else
+                Debug.LogWarning("CoinManager is missing in the scene!");
+            Destroy(other.gameObject);        // Remove coin from scene
         }
     }
 }

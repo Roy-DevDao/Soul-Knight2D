@@ -6,6 +6,8 @@ public class SwordAttack : BaseWeaponAttack
     public Animation atkAnimation;
     public bool attacking = false;
 
+    public Sword weapon;
+
     // Use this for initialization
     new void Start()
     {
@@ -20,6 +22,11 @@ public class SwordAttack : BaseWeaponAttack
 
         this.attacking = true;
         atkAnimation.Play();
+
+        if (weapon != null)
+        {
+            weapon.AttackEffect(); // Hàm mới bạn thêm vào Sword.cs
+        }
     }
 
     // Update is called once per frame

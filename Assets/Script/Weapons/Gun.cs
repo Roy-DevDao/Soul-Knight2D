@@ -10,13 +10,25 @@ public class Gun : BaseWeapon
 
     protected float timeCount = 0f;
 
+    [SerializeField]
+    private AudioClip fireSound;
+
+    private AudioSource audioSource;
+
     // Use this for initialization
     new void Start()
     {
         base.Start();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    protected virtual void Fire() {}
+    protected virtual void Fire()
+    {
+        if (audioSource != null && fireSound != null)
+        {
+            audioSource.PlayOneShot(fireSound);
+        }
+    }
 
     protected override Quaternion GetRotation()
     {

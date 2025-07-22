@@ -15,6 +15,13 @@ EditorBuildSettings:
     path: Assets/Scene/Level02.unity
     guid: d7ec1716ce68a4a499bc4e63e9983a21
   - enabled: 1
-    path: Assets/Scene/Level03.unity
-    guid: 854636a7ee34b4446ab87d07ec61292e
+    path: Assets/Scene/Level3.unity
+    guid: b35b17c7e5faa8240a5e7a0e19f9fc44
+  - enabled: 1
+    path: Assets/Scene/EndGame.unity
+    guid: a25c71c47fe9fa34a9a67ca0c514f453
+  - enabled: 1
+    path: Assets/Scene/EndCreditScence.unity
+    guid: fa99e243853deaa4d84cffb044c812a1
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

@@ -2236,51 +2236,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &872387685
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 872387687}
-  - component: {fileID: 872387686}
-  m_Layer: 0
-  m_Name: SliderMusic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &872387686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872387685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c896e86aad3f454781df368a445e62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 1591005613}
---- !u!4 &872387687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872387685}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12784, y: 0.4997, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &881297022
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,6 +5352,79 @@ Transform:
   - {fileID: 1928609193}
   m_Father: {fileID: 1278916249}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5988941227771177996
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.12784
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4997
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 57394574288038486, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264922740164182547, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 1591005613}
+    - target: {fileID: 6997473879028498099, guid: a229f71d3bb1fee4a9358cee743a9e9f,
+        type: 3}
+      propertyPath: m_Name
+      value: SliderMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a229f71d3bb1fee4a9358cee743a9e9f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5405,4 +5433,4 @@ SceneRoots:
   - {fileID: 4326348706690715336}
   - {fileID: 1374983689}
   - {fileID: 2050383789}
-  - {fileID: 872387687}
+  - {fileID: 5988941227771177996}

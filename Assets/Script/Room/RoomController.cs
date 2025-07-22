@@ -49,7 +49,17 @@ public class RoomController : MonoBehaviour
         }
         if (chest != null)
         {
-            chest.SetActive(true); 
+            chest.SetActive(true);
+            Transform appearSoundObj = chest.transform.Find("ChestAppearSound");
+            if (appearSoundObj != null)
+            {
+                AudioSource appearSound = appearSoundObj.GetComponent<AudioSource>();
+                if (appearSound != null)
+                {
+                    appearSound.Play();
+                }
+            }
+
             Transform chestClose = chest.transform.Find("ChestClose");
             if (chestClose != null)
                 chestClose.gameObject.SetActive(true);

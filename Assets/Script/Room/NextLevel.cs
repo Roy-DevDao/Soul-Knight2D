@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.Audio;
 
 public class NextLevel : MonoBehaviour
 {
@@ -37,4 +38,5 @@ public class NextLevel : MonoBehaviour
             isPlayerOpen = false;
         }
     }
+
 }
