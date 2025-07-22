@@ -10,7 +10,6 @@ public class BaseEnemy : MonoBehaviour
 
     public int maxHealth = 10;
     protected float _health = 0f;
-
     public Slider healthbar;
 
     public float health

@@ -6,9 +6,9 @@ public class UICoinDisplay : MonoBehaviour
     public static UICoinDisplay Instance;
 
     public TextMeshProUGUI coinText; // Assign in Inspector
-    private int coinCount = 0;
+    public int coinCount = 0;
 
-    private void Awake()
+    public void Awake()
     {
         if (Instance == null)
             Instance = this;

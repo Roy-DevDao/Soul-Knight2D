@@ -12,14 +12,14 @@ public class HealthAndMana : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        healthText.text = "100/100"; 
+        healthText.text = "100/100";
         manaText.text = "50/50";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void Awake()
     {
@@ -30,5 +30,17 @@ public class HealthAndMana : MonoBehaviour
     {
         fillHealthBar.fillAmount = (float)currentValue / maxValue;
         healthText.text = $"{currentValue}/{maxValue}";
+    }
+
+    public void UpdateManaBar(int currentValue, int maxValue)
+    {
+        fillManaBar.fillAmount = (float)currentValue / maxValue;
+        manaText.text = $"{currentValue}/{maxValue}";
+    }
+    public void Heal(int currentValue,int moreHealth)
+    {
+        fillHealthBar.fillAmount = (float)(currentValue + moreHealth) / 100;
+        healthText.text = $"{currentValue + moreHealth}/100";
+            
     }
 }

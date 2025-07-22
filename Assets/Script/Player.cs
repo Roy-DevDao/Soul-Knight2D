@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public HealthAndMana healthAndMana;
     
     private float knockbackDistance = 1f;
-
+    public AudioSource audioSource;
 
     public GameObject weapon;
 
@@ -57,11 +57,13 @@ public class Player : MonoBehaviour
                 playerHealth.TakeDamage(10);
                 transform.position += (Vector3)(knockDirection * knockbackDistance);
                 GetComponent<ReceiveDame>().FlashOnDamage();
+                audioSource.Play();
                 break;
             case TAG.ENEMY_BULLET:
                 //ParametersScript.healValue -= 200;
                 playerHealth.TakeDamage(20);
                 GetComponent<ReceiveDame>().FlashOnDamage();
+                audioSource.Play();
                 break;
             default:
                 break;
